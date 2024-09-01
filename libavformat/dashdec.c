@@ -1113,7 +1113,7 @@ static int parse_manifest_adaptationset_attr(AVFormatContext *s, xmlNodePtr adap
     return 0;
 }
 
-static int parse_manifest_adaptationset(AVFormatContext *s, const char *url,
+static int parse_manifest_adaptationset(AVFormatContext *s, const char *base_url,
                                         xmlNodePtr adaptionset_node,
                                         xmlNodePtr mpd_baseurl_node,
                                         xmlNodePtr period_baseurl_node,
@@ -1146,7 +1146,7 @@ static int parse_manifest_adaptationset(AVFormatContext *s, const char *url,
         } else if (!av_strcasecmp(node->name, "SupplementalProperty")) {
             adaptionset_supplementalproperty_node = node;
         } else if (!av_strcasecmp(node->name, "Representation")) {
-            ret = parse_manifest_representation(s, url, node,
+            ret = parse_manifest_representation(s, base_url, node,
                                                 adaptionset_node,
                                                 mpd_baseurl_node,
                                                 period_baseurl_node,
